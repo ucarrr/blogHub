@@ -3,6 +3,8 @@ package model;
 import model.enums.BlogStatus;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Blog {
     private String title;
@@ -10,6 +12,8 @@ public class Blog {
     private LocalDate date;
     private User user;
     private BlogStatus blogStatus;
+    private Long likeCount;
+    private List<BlogComment> blogCommentList = new ArrayList<>();
 
 
     public Blog(String title, String text, User user) {
@@ -18,6 +22,7 @@ public class Blog {
         this.date = LocalDate.now();
         this.user = user;
         this.blogStatus = BlogStatus.DRAFT;
+        this.likeCount=0L;
     }
 
     public String getTitle() {
@@ -58,6 +63,22 @@ public class Blog {
 
     public void setBlogStatus(BlogStatus blogStatus) {
         this.blogStatus = blogStatus;
+    }
+
+    public Long getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(Long likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public List<BlogComment> getBlogCommentList() {
+        return blogCommentList;
+    }
+
+    public void setBlogCommentList(List<BlogComment> blogCommentList) {
+        this.blogCommentList = blogCommentList;
     }
 
     @Override

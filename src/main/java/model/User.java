@@ -3,6 +3,7 @@ package model;
 import model.enums.StatusType;
 import model.enums.UserType;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -15,18 +16,19 @@ public class User {
     private StatusType statusType;
     private String bio;
     private Set<SocialMedia> socialMediaList;
-    private List<Blog> blog;
+    private List<Blog> blogList = new ArrayList<>();
+    private List<BlogTag> followedTagList = new ArrayList<>();
 
 
-    public User(){
-         userType= UserType.STANDARD;
+    public User() {
+        userType = UserType.STANDARD;
     }
 
-    public User(String email,  String password) {
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
-        this.statusType=StatusType.WAITING_APPROVAL;
-        this.userType= UserType.STANDARD;
+        this.statusType = StatusType.WAITING_APPROVAL;
+        this.userType = UserType.STANDARD;
     }
 
     public String getName() {
@@ -85,12 +87,20 @@ public class User {
         this.socialMediaList = socialMediaList;
     }
 
-    public List<Blog> getBlog() {
-        return blog;
+    public List<Blog> getBlogList() {
+        return blogList;
     }
 
-    public void setBlog(List<Blog> blog) {
-        this.blog = blog;
+    public void setBlogList(List<Blog> blogList) {
+        this.blogList = blogList;
+    }
+
+    public List<BlogTag> getFollowedTagList() {
+        return followedTagList;
+    }
+
+    public void setFollowedTagList(List<BlogTag> followedTagList) {
+        this.followedTagList = followedTagList;
     }
 
     @Override
@@ -101,6 +111,10 @@ public class User {
                 ", password='" + password + '\'' +
                 ", userType=" + userType +
                 ", statusType=" + statusType +
+                ", bio='" + bio + '\'' +
+                ", socialMediaList=" + socialMediaList +
+                ", blogList=" + blogList +
+                ", followedTagList=" + followedTagList +
                 '}';
     }
 }
